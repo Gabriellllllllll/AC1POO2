@@ -1,5 +1,9 @@
 package ac1.ac1.dto;
 
+import java.time.format.DateTimeFormatter;
+
+import ac1.ac1.entities.Event;
+
 public class EventDTO {
     private Long id;
     private String name;
@@ -10,9 +14,35 @@ public class EventDTO {
     private String starttime;
     private String endtime;
     private String emailcontact;
-    
+       
     public EventDTO(){
 
+    }
+
+    public EventDTO(Long id, String name, String description, String place, String startdate, String enddate, String starttime, String endtime, String emailcontact){
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.place = place;
+        this.startdate = startdate;
+        this.enddate = enddate;
+        this.starttime = starttime;
+        this.endtime = endtime;
+        this.emailcontact = emailcontact;
+    }
+
+    public EventDTO(Event event){
+        DateTimeFormatter data = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DateTimeFormatter hora = DateTimeFormatter.ofPattern("HH-mm-ss");
+        this.id = event.getId();
+        this.name = event.getName();
+        this.description = event.getDescription();
+        this.place = event.getPlace();
+        this.startdate = event.getStartdate().format(data);
+        this.enddate = event.getEnddate().format(data);
+        this.starttime = event.getStarttime().format(hora);
+        this.endtime = event.getEndtime().format(hora);
+        this.emailcontact = event.getEmailcontact();
     }
 
     public String getName() {
