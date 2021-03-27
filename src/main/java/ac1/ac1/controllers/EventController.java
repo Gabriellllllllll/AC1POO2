@@ -1,11 +1,13 @@
 package ac1.ac1.controllers;
 
 import java.net.URI;
+import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,10 +40,11 @@ public class EventController {
         @RequestParam(value = "orderBy",      defaultValue = "id") String orderBy,
         @RequestParam(value = "name",         defaultValue = "") String name,
         @RequestParam(value = "place",        defaultValue = "") String place,
-        @RequestParam(value = "description",  defaultValue = "") String description
+        @RequestParam(value = "description",  defaultValue = "") String description,
+        @RequestParam(value = "startdate",    required = false) @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate startdate
     ){
         PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
-        Page<EventDTO> list = service.getEvents(pageRequest, name, place, description);
+        Page<EventDTO> list = service.getEvents(pageRequest, name, place, description, startdate);
         return ResponseEntity.ok(list);
     }
 
