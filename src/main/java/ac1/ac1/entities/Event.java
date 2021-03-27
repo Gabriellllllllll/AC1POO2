@@ -37,7 +37,7 @@ public class Event implements Serializable{
 
     public Event(EventInsertDTO dto){
         DateTimeFormatter data = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        DateTimeFormatter hora = DateTimeFormatter.ofPattern("HH-mm-ss");
+        DateTimeFormatter hora = DateTimeFormatter.ofPattern("HH-mm");
         this.name = dto.getName();
         this.description = dto.getDescription();
         this.place = dto.getPlace();

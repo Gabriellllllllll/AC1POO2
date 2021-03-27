@@ -33,7 +33,7 @@ public class EventDTO {
 
     public EventDTO(Event event){
         DateTimeFormatter data = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        DateTimeFormatter hora = DateTimeFormatter.ofPattern("HH-mm-ss");
+        DateTimeFormatter hora = DateTimeFormatter.ofPattern("HH-mm");
         this.id = event.getId();
         this.name = event.getName();
         this.description = event.getDescription();
