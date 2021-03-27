@@ -11,6 +11,6 @@ import ac1.ac1.entities.Event;
 @Repository
 public interface EventRepository extends JpaRepository <Event, Long>{
     
-    @Query("SELECT c FROM Event c " + "WHERE " + "(LOWER(c.name) LIKE LOWER(CONCAT('%', :name, '%'))) AND " + "(LOWER(c.place) LIKE LOWER(CONCAT('%', :place, '%')))")
-    public Page <Event> find(Pageable pageRequest, String name, String place);
+    @Query("SELECT c FROM Event c " + "WHERE " + "(LOWER(c.name) LIKE LOWER(CONCAT('%', :name, '%'))) AND " + "(LOWER(c.place) LIKE LOWER(CONCAT('%', :place, '%'))) AND " + "(LOWER(c.description) LIKE LOWER(CONCAT('%', :description, '%')))")
+    public Page <Event> find(Pageable pageRequest, String name, String place, String description);
 }

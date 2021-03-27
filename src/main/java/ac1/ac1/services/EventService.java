@@ -26,8 +26,8 @@ public class EventService {
     @Autowired
     private EventRepository repository;
 
-    public Page<EventDTO> getEvents(PageRequest pageRequest, String name, String place){
-        Page<Event> list = repository.find(pageRequest, name, place);
+    public Page<EventDTO> getEvents(PageRequest pageRequest, String name, String place, String description){
+        Page<Event> list = repository.find(pageRequest, name, place, description);
         return list.map( c -> new EventDTO(c) );
     }
 
